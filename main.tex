@@ -1,0 +1,96 @@
+\documentclass[tcc,numbers]{coppe} % numbers (natbib) -> ReferÃªncias
+\usepackage[utf8]{inputenc}       % numeradas ao invÃ©s de '(NOME, ano)'  
+\usepackage{amsmath,amssymb}
+\usepackage{epsfig}
+\usepackage{epstopdf}
+\usepackage{listings}
+\usepackage{hyperref}
+\usepackage{scrextend}
+\usepackage{textcomp}
+\usepackage{float}
+\usepackage{algorithm}
+\usepackage[noend]{algpseudocode}
+\usepackage{url}
+\usepackage{indentfirst}
+\graphicspath{{fig/}}
+\lstset{
+    inputpath=src/,
+    language=C++,
+    basicstyle=\footnotesize,
+    otherkeywords={self},             
+    emph={__init__},          
+    frame=single,                         
+    showstringspaces=false  ,
+    breaklines=true,
+    numbers=left,
+    numberstyle=\footnotesize,
+    tabsize=3,
+    breakatwhitespace=false
+    }
+
+\makelosymbols
+\makeloabbreviations
+
+%------------------------------------------------------------------------------------------
+% Lista de Comandos
+
+\newcommand{\pd}[2]{\frac{\partial #1 }{\partial #2}}
+
+%------------------------------------------------------------------------------------------
+
+\begin{document}
+  \lstset{language=C++} 
+  \title{}
+  \foreigntitle{TODO}
+  \author{Raphael}{Barros Parreira}
+  \advisor{Prof.}{Alessandro}{Jacoud}{D.Sc.}
+
+
+  \examiner{Prof.}{Alessandro Jacoud}{D.Sc.}
+  \examiner{Prof.}{Nome do Segundo Examinador Sobrenome}{Ph.D.}
+  \examiner{Prof.}{Nome do Terceiro Examinador Sobrenome}{D.Sc.}
+  \department{ECA}
+  \date{12}{2020}
+
+	% Até 6 palavras-chave
+  \keyword{ROS}
+  \keyword{Phantom Omni}
+  \keyword{Geomagic Touch}
+  \keyword{Driver}
+  \keyword{Teleoperation}
+  \keyword{Docker}
+%
+  \maketitle
+%
+  \frontmatter
+%
+  %\include{include/dedic}
+ % \include{include/thanks}
+  \include{include/resumo}
+  %\include{include/abstract}
+  \tableofcontents
+  \listoffigures
+  \listoftables
+  \printlosymbols
+  \printloabbreviations
+
+
+
+  \mainmatter
+  \include{include/introducao}
+  \include{include/simulacao-e-modelo}
+  \include{include/aspectos-teoricos}
+  \include{include/treinos-e-resultados}
+  \include{include/conclusao-trab-futuro}
+
+  \backmatter
+  \bibliographystyle{coppe-unsrt} % Refer�ncias por ordem de aparic�o
+  \bibliography{thesis}
+  %\label{bib:end} % n�o apagar. Label usado na ficha catalográfica <padrão coppe errado>
+
+  \appendix
+  \include{include/appenA}
+  
+  	
+  	
+\end{document}

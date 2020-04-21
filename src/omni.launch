@@ -1,0 +1,40 @@
+<launch>
+    <arg name="robot_urdf" default="$(find omni_description)/urdf/omni.urdf" />
+    <arg name="robot_srdf" default="$(find omni_moveit)/config/phantom_omni.srdf" />
+
+    <param name="omni_urdf" command="cat $(arg robot_urdf)" />
+
+    <arg name="prefix" default="" />
+    <arg name="namespace" default="" />
+    <arg name="type" default="" />
+
+    <arg name="teleop_master" default="true" />
+    <arg name="teleop_remap" default="/teleop" />
+
+    <group ns="$(arg namespace)">
+		<node name="driver" pkg="omni_driver" type="omni_driver" output="screen">
+			<param name="omni_name" type="string" value="" />
+            <param name="omni_type" type="string" value="$(arg type)" />
+			<param name="omni_serial" type="string" value="11129400000" />
+            <param name="teleop_master" type="boolean" value="$(arg teleop_master)" />
+            <param name="path_urdf" value="$(arg robot_urdf)" />
+            <param name="path_srdf" value="$(arg robot_srdf)" />
+            <param name="force_feedback_gain" type="double" value="0.01" />
+            <param name="twist_gain" type="double" value="1.0" />
+            <rosparam param="joint_states_gain">[1.0, 1.0, 1.0, 1.0, 1.0, 1.0]</rosparam>
+            <rosparam param="joint_states_offsets">[0.0, 0.0, 0.0, 0.0, 0.0, 0.0]</rosparam>
+            <rosparam param="rot_link_to_teleop_colwise">[1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0]</rosparam>
+
+            <remap from="/teleop" to="$(arg teleop_remap)" />
+            <remap from="/$(arg namespace)/teleop_joint_states" to="/doris/manipulator_controller/joint_states" />
+            <remap from="/$(arg namespace)/force_feedback" to="/doris/manipulator_controller/force" />
+            
+		</node>
+
+        <node name="state_publisher" pkg="robot_state_publisher" type="robot_state_publisher">
+            <param name="~tf_prefix" type="string" value="$(arg prefix)" />
+            <remap from="robot_description" to="omni_urdf" />
+        </node>
+    </group>
+ 	
+</launch>

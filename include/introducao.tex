@@ -1,0 +1,51 @@
+\chapter{Introdução}\label{ch1}
+
+\section{Tema}
+O tema do trabalho é a utilização de algorítimos de rede neural e evolução genética para controlar um veículo uniciclo. Os algorítimos, além do controle, farão o planejamento de trajetória do movimento, evitando a colisão com obstáculos no percurso. Sendo assim, o veículo será capaz, ao final do trabalho, de completar um circuito de prova.
+
+\section{Problema e Justificativa}
+Muitas soluções de controle de movimento, tanto acadêmicas quanto comerciais, utilizam o controle clássico como otimizador do movimento. Mas, um aspecto importante, é que, para que o um PID funcione, por exemplo, é necessário que se faça um planejamento de trajetória anteriormente.
+
+O problema que surge é o seguinte: o que acontece com o movimento e com o controlador caso o planejamento de trajetória falhe ou seja desligado?
+
+Esse trabalho é uma tentativa de resolver esse problema, para que o movimento continue em segurança, por um tempo determinado, até que o sistema normal seja reestabelecido.
+
+\section{Delimitação}
+Como o projeto não tem a pretensão de substituir ou ser mais eficiente do que um controle clássico, nenhuma comparação experimental ou simulada será feita. Esse estudo se limita a elaborar e implementar uma solução viável e eficaz para que o movimento continue de forma segura, diminuindo, assim, as chances de colisão.
+
+Os circuitos desenvolvidos são compostos apenas de paredes altas o suficiente para que o sensor de distância do veículo seja capaz de captá-las. Sendo assim, o veículo percorrerá a maior distância possível sem colidir com um obstáculo.
+
+\section{Objetivos}
+\subsection{Objetivo Geral}
+O objetivo deste trabalho é controlar uma plataforma móvel utilizando algorítimos de Rede Neural, sendo que, para otimizar a rede, será usado algorítimo genético.
+
+Para viabilizar o estudo, será construído um simulador da plataforma com sensores capazes de mimetizar uma aplicação real. Os sensores serão capazes de informar as velocidades linear e angular instantâneas do veículo, e medir a distância entre a plataforma e um obstáculo em direções arbitrárias
+
+\subsection{Objetivos Específicos}
+
+\begin{itemize}
+  \item O simulador deve ser capaz de reproduzir o modelo físico de um uniciclo, com as mesmas entradas e saídas do modelo escolhido.
+  \item O ambiente simulado deve ser suficiente para mimetizar características, julgadas importantes e necessárias, de aplicações reais, suficientes para que haja a possibilidade de pontuação e ordenamento dos indivíduos.
+  \item Simular dezenas de veículos simultaneamente, a fim de otimizar o tempo necessário para que o algorítimo genético convirja.
+  \item Um algorítimo de Rede Neural deve ser escolhido e implementado.
+  \item Um algorítimo de evolução genética deve ser escolhido e implementado.
+  \item A Rede Neural deverá ser capaz de controlar o movimento e, também, fazer o planejamento de trajetória do veículo, evitando colisões com obstáculos.
+  \item O veículo, ao final de diversas iterações dos algorítimos, deverá ser capaz de completar integral ou parcialmente os circuitos de testes propostos, e deverá completar integralmente o circuito de prova.
+\end{itemize}
+
+\section{Metodologia}
+O simulador a ser desenvolvido será constituído dos seguintes componentes: um modelo de um veículo uniciclo, oito circuitos de treino com paredes (um para cada característica a ser treinada), um circuito de prova com paredes (reúne diversas dificuldades para que a avaliação seja abrangente), sensor de distância e sensores de velocidade linear e angular.
+
+Tendo o simulador implementado, um algorítimo Neuroevolutivo será elaborado e implementado, recebendo os valores dos sensores e entregando as acelerações angular e linear desejadas para o veículo. O simulador funciona de uma forma que cada veículo terá a sua própria rede neural, responsável por controlar o próprio indivíduo.
+
+Para que o tempo de convergência seja drasticamente reduzido, o simulador deverá ser capaz de executar dezenas de indivíduos simultaneamente, paralelizando, assim, o processo de treinamento da rede neural.
+
+\section{Conteúdos dos Capítulos}
+A seguir, uma pequena descrição sobre o conteúdo de cada capítulo presente no documento:
+
+\begin{itemize}
+  \item Capítulo 2: serão apresentados toda a estrutura, as características e o desenvolvimento do simulador. Possibilitando o entendimento e a reprodução do sistema em trabalhos futuros.
+  \item Capítulo 3: neste capítulo se encontram todos os aspectos teóricos dos algorítimos usados no projeto. O objetivo aqui é detalhar e justificar cada aspecto dos algorítimos.
+  \item Capítulo 4: os resultados e treinos serão descritos e detalhados nesse capítulo. O leitor verá a evolução do experimento, como a rede neural evolui com o tempo e atinge o seu objetivo.
+  \item Capítulo 5: serão apresentadas as conclusões sobre os resultados alcançados e, também, possíveis trabalhos que usem esse como partida, abordando outros aspectos que não puderam ser abordados nesse estudo.
+\end{itemize}
